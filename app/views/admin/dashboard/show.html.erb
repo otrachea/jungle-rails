@@ -4,21 +4,45 @@
     <h1>Admin &raquo; Dashboard</h1>
   </header>
 
+<div class="panel panel-default products">
+
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td>
+            <b>Total number of categories:</b>
+            <br>
+          </td>
+          <td>
+            <%= @category_total %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>Total number of unique plants:</b>
+            <br>
+          </td>
+          <td>
+            <%= @plant_total %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
   <div class="panel panel-default products">
 
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th colspan="2">Product</th>
           <th>Category</th>
-          <th>Price</th>
-          <th>Qty Remaining</th>
-          <th></th>
+          <th>Number of unique plants</th>
         </tr>
       </thead>
       <tbody>
-        <% @products.each do |p| %>
-          <%= render 'product', product: p %>
+        <% @categories.each do |category| %>
+          <%= render 'category', category: category  %>
         <% end %>
       </tbody>
     </table>
@@ -30,20 +54,20 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th colspan="2">Category</th>
+          <th>Product</th>
           <th>Category</th>
           <th>Price</th>
           <th>Qty Remaining</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
-        <% @products.each do |p| %>
-          <%= render 'product', product: p %>
+        <% @products.each do |product| %>
+          <%= render 'product', product: product %>
         <% end %>
       </tbody>
     </table>
 
   </div>
+
 
 </section>
