@@ -6,7 +6,7 @@
 
   <% if enhanced_cart.length == 0 %>
   <div class="alert alert-primary" role="alert">
-    No items in cart. Click <a href="/">here</a> to return to the home page.
+    No items in cart. <%= link_to "Click here to return to the home page.", "/" %>
   </div>
   <% else %>
   <div class="panel panel-default items">
