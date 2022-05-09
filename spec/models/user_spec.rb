@@ -9,8 +9,8 @@ RSpec.describe User, type: :model do
         email: "test@example.com",
         first_name: "Bob",
         last_name: "Smith",
-        password: "abc123",
-        password_confirmation: "abc123"
+        password: "p@55word",
+        password_confirmation: "p@55word"
       })
       user.save
       
@@ -22,8 +22,8 @@ RSpec.describe User, type: :model do
         email: "test@example.com",
         first_name: "Bob",
         last_name: "Smith",
-        password: "abc123",
-        password_confirmation: "abc123"
+        password: "p@55word",
+        password_confirmation: "p@55word"
       })
       user1.save
       
@@ -31,8 +31,8 @@ RSpec.describe User, type: :model do
         email: "test@example.com",
         first_name: "Bob2",
         last_name: "Smith2",
-        password: "abc123",
-        password_confirmation: "abc123"
+        password: "p@55word",
+        password_confirmation: "p@55word"
       })
       user2.save
 
@@ -42,8 +42,8 @@ RSpec.describe User, type: :model do
         email: "TEST@EXAMPLE.COM",
         first_name: "Bob2",
         last_name: "Smith2",
-        password: "abc123",
-        password_confirmation: "abc123"
+        password: "p@55word",
+        password_confirmation: "p@55word"
       })
       user2.save
 
@@ -54,8 +54,8 @@ RSpec.describe User, type: :model do
       user = User.new({
         email: "test@example.com",
         last_name: "Smith",
-        password: "abc123",
-        password_confirmation: "abc123"
+        password: "p@55word",
+        password_confirmation: "p@55word"
       })
       user.save
       
@@ -66,8 +66,8 @@ RSpec.describe User, type: :model do
       user = User.new({
         email: "test@example.com",
         first_name: "Bob",
-        password: "abc123",
-        password_confirmation: "abc123"
+        password: "p@55word",
+        password_confirmation: "p@55word"
       })
       user.save
       
@@ -80,8 +80,8 @@ RSpec.describe User, type: :model do
         email: "test@example.com",
         first_name: "Bob",
         last_name: "Smith",
-        password: "123abc",
-        password_confirmation: "abc123"
+        password: "p@55word",
+        password_confirmation: "p@55word1"
       })
       user.save
       
@@ -94,11 +94,12 @@ RSpec.describe User, type: :model do
         email: "test@example.com",
         first_name: "Bob",
         last_name: "Smith",
-        password_confirmation: "abc123"
+        password_confirmation: "p@55word"
       })
       user.save
       
-      expect(user.errors.full_messages).to eq(["Password can't be blank"])
+      expect(user.errors.full_messages).to eq(["Password can't be blank",
+        "Password is too short (minimum is 8 characters)"])
     end
 
     it "is not valid when password_confirmation is missing" do
@@ -107,7 +108,7 @@ RSpec.describe User, type: :model do
         email: "test@example.com",
         first_name: "Bob",
         last_name: "Smith",
-        password: "123abc",
+        password: "p@55word",
       })
       user.save
       puts user.inspect
