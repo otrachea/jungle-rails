@@ -74,7 +74,7 @@ RSpec.describe User, type: :model do
       expect(user.errors.full_messages).to eq(["Last name can't be blank"])
     end
     
-    it "is not valid whne password and password_confirmation don't match" do
+    it "is not valid when password and password_confirmation don't match" do
 
       user = User.new({
         email: "test@example.com",
@@ -86,6 +86,32 @@ RSpec.describe User, type: :model do
       user.save
       
       expect(user.errors.full_messages).to eq(["Password confirmation doesn't match Password"])
+    end
+
+    it "is not valid when password missing" do
+
+      user = User.new({
+        email: "test@example.com",
+        first_name: "Bob",
+        last_name: "Smith",
+        password_confirmation: "abc123"
+      })
+      user.save
+      
+      expect(user.errors.full_messages).to eq(["Password can't be blank"])
+    end
+
+    it "is not valid when password_confirmation is missing" do
+
+      user = User.new({
+        email: "test@example.com",
+        first_name: "Bob",
+        last_name: "Smith",
+        password: "123abc",
+      })
+      user.save
+      puts user.inspect
+      expect(user.errors.full_messages).to eq(["Password confirmation can't be blank"])
     end
 
   end
