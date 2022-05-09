@@ -75,7 +75,6 @@ RSpec.describe User, type: :model do
     end
     
     it "is not valid when password and password_confirmation don't match" do
-
       user = User.new({
         email: "test@example.com",
         first_name: "Bob",
@@ -89,7 +88,6 @@ RSpec.describe User, type: :model do
     end
 
     it "is not valid when password missing" do
-
       user = User.new({
         email: "test@example.com",
         first_name: "Bob",
@@ -103,17 +101,70 @@ RSpec.describe User, type: :model do
     end
 
     it "is not valid when password_confirmation is missing" do
+      user = User.new({
+        email: "test@example.com",
+        first_name: "Bob",
+        last_name: "Smith",
+        password: "p@55word"
+      })
+      user.save
 
+      expect(user.errors.full_messages).to eq(["Password confirmation can't be blank"])
+    end
+
+  end
+
+  describe ".authenticate_with_credientials" do
+    it "returns user with credentials are correct" do
       user = User.new({
         email: "test@example.com",
         first_name: "Bob",
         last_name: "Smith",
         password: "p@55word",
+        password_confirmation: "p@55word"
       })
       user.save
-      puts user.inspect
-      expect(user.errors.full_messages).to eq(["Password confirmation can't be blank"])
+
+      expect(User.authenticate_with_credientials("test@example.com", "p@55word")).to be_instance_of User      
     end
 
+    it "returns nil when email is invalid" do
+      user = User.new({
+        email: "test@example.com",
+        first_name: "Bob",
+        last_name: "Smith",
+        password: "p@55word",
+        password_confirmation: "p@55word"
+      })
+      user.save
+
+      expect(User.authenticate_with_credientials("test@example.com1", "p@55word")).to eq nil      
+    end
+
+    it "returns user even if email entered is padded with spaces" do
+      user = User.new({
+        email: "test@example.com",
+        first_name: "Bob",
+        last_name: "Smith",
+        password: "p@55word",
+        password_confirmation: "p@55word"
+      })
+      user.save
+
+      expect(User.authenticate_with_credientials("    test@example.com ", "p@55word")).to be_instance_of User
+    end
+
+    it "returns user even if email entered is uppercase" do
+      user = User.new({
+        email: "test@example.com",
+        first_name: "Bob",
+        last_name: "Smith",
+        password: "p@55word",
+        password_confirmation: "p@55word"
+      })
+      user.save
+
+      expect(User.authenticate_with_credientials("    TEST@EXAMPLE.COM ", "p@55word")).to be_instance_of User
+    end
   end
 end
