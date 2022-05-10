@@ -1,6 +1,9 @@
 class CartsController < ApplicationController
 
   def show
+    if !session[:user_id]
+      redirect_to '/login'
+    end
   end
 
   def add_item
