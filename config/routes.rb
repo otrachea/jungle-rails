@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   get '/signup', to: 'users#new'
+  get '/register', to: 'users#new'
   post '/users', to: 'users#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
