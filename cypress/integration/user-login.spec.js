@@ -1,5 +1,5 @@
 describe("jungle", () => {
-  it("user can signup for an account", () => {
+  it.skip("user can signup for an account", () => {
     cy.visit("http://localhost:3000/signup");
 
     cy.get("#user_first_name").type("Bob");
@@ -13,7 +13,7 @@ describe("jungle", () => {
     cy.url().should("eq", "http://localhost:3000/");
   });
 
-  it("user can logout", () => {
+  it.skip("user can logout", () => {
     cy.visit("http://localhost:3000/logout");
     cy.url().should("eq", "http://localhost:3000/login");
   })
@@ -28,4 +28,6 @@ describe("jungle", () => {
 
     cy.url().should("eq", "http://localhost:3000/");
   });
+
+  
 });
