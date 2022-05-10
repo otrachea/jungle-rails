@@ -5,7 +5,6 @@ describe("jungle", () => {
   });
 
   it("visits the product after clicking on it", () => {
-    cy.get("section.products-show")
+    cy.get("section.products-show");
   });
-
 });
