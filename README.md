@@ -38,5 +38,23 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 
 # Features
 
-## Known Issues
+## Browsing the Site
 
+### Sold Out Badge
+
+## Admin
+
+### Categories
+
+### Products
+## Login & Signup
+
+## Orders
+
+### Making an Order
+
+### Order Details
+
+## Known Issues
+- When making an order, the email used for the order will be `kvirani@gmail.com` instead of the one associated with the loggged in user. This is due to having stripe only partly implemented.
+- When an order is completed, the stock amount will not change.
