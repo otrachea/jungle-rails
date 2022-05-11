@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for your order, <%= @user.first_name %> <%= @user.last_name %>!</h1>
+    <p>
+      Your order number is: <%= @url %>.<br>
+    </p>
+    <p>
+      To view your order details, please go to the following url: <%= @url %>.
+    </p>
+    <p>Thanks for shoping with us and have a great day!</p>
+  </body>
+</html>

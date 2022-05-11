@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :useremails
   get 'static_pages/help'
   get 'static_pages/faq'
   root to: 'products#index'
