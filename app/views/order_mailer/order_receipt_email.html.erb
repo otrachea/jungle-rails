@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Thank you for your order <%= @user[:first_name] %> <%= @user[:last_name] %>!</p>
+    
+    <p>Your order ID is: <b><%= @order.id %></b> </p>
+    <p>You can view your order details at: @url</p>
+
+    <p>Thank you again for ordering from Jungle! We hope you have a good day!</p>
+  </body>
+</html>

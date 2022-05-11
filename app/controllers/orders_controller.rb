@@ -12,6 +12,9 @@ class OrdersController < ApplicationController
     order  = create_order(charge)
 
     if order.valid?
+
+      OrderMailer.with(user: current_user, order: order).order_receipt_email.deliver_later
+
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
     else
